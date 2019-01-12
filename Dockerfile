@@ -26,11 +26,9 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
     && docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-enable gd
 
-COPY docker/config/memory.ini $PHP_INI_DIR/conf.d/
+COPY config/memory.ini $PHP_INI_DIR/conf.d/
 RUN echo "request_terminate_timeout = 300000" >> /usr/local/etc/php-fpm.d/www.conf
 RUN echo "request_terminate_timeout = 300000" >> /usr/local/etc/php-fpm.d/docker.conf
-
-RUN echo "upstream php-upstream { server 127.0.0.1:9000; }" > /etc/nginx/conf.d/upstream.conf
 
 RUN usermod -u 1000 www-data
 
