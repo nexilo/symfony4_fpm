@@ -15,8 +15,7 @@ RUN apt-get install -y \
         libcairo2-dev \
         libjpeg-dev \
         libpango1.0-dev \
-        libgif-dev \
-        nginx
+        libgif-dev
 
 RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
 RUN printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/conf.d/tzone.ini
