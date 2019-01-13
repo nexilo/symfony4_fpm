@@ -37,3 +37,5 @@ RUN groupmod -g 1000 www-data
 RUN chsh -s /bin/bash www-data
 
 WORKDIR /var/www/symfony
+
+EXPOSE 9000
